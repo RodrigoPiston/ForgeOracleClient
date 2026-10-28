@@ -1,0 +1,8 @@
+bin/
+obj/
+artifacts/
+*.user
+.vs/
+.idea/
+# Development-only in-game driver (uses cheats, tied to a local test setup); not published.
+tests/ForgeOracle.LiveHarness/

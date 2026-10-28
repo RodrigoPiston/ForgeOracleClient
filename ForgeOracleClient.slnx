@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ForgeOracle.Core/ForgeOracle.Core.csproj" />
+    <Project Path="src/ForgeOracle.Plugin/ForgeOracle.Plugin.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ForgeOracle.Core.Tests/ForgeOracle.Core.Tests.csproj" />
+  </Folder>
+</Solution>

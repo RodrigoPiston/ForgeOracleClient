@@ -1,0 +1,26 @@
+name: Bug report
+description: Something else is wrong (UI, errors in the log, configuration).
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Relevant lines from BepInEx/LogOutput.log
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Forge Oracle Client and Valheim versions
+      placeholder: "1.0.0, Valheim 1.0.21"
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Mod list

@@ -1,0 +1,40 @@
+name: Wrong prediction
+description: The forge did something different from what Forge Oracle predicted.
+labels: [wrong-prediction]
+body:
+  - type: textarea
+    id: validation
+    attributes:
+      label: "[Validation] line(s)"
+      description: Copy the `[Validation]` lines for the attempt from `BepInEx/LogOutput.log`.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: Output of `forgeoracle status` and `forgeoracle providers`
+      description: Run both in the F5 console with the forge open and the item selected.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Mod list
+      description: Export or copy it from your mod manager, with versions.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did the attempt happen?
+      options:
+        - Single player / local world
+        - Dedicated server
+        - Hosted by another player
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: Please do not attach character (.fch) or world files; they are not needed.

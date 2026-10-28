@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The BepInEx plugin. It builds against the local Valheim install (assemblies are referenced, never copied or
+    redistributed). Set VALHEIM_DIR or -p:ValheimDir=... when the game is not in the default Steam location.
+    dotnet build -c Release -p:Deploy=true copies the plugin into the r2modman profile (or the game's BepInEx).
+  -->
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>ForgeOracleClient</AssemblyName>
+    <RootNamespace>ForgeOracle.Plugin</RootNamespace>
+    <ValheimDir Condition="'$(ValheimDir)' == '' and '$(VALHEIM_DIR)' != ''">$(VALHEIM_DIR)</ValheimDir>
+    <ValheimDir Condition="'$(ValheimDir)' == ''">$(HOME)/.steam/steam/steamapps/common/Valheim</ValheimDir>
+    <ManagedDir>$(ValheimDir)/valheim_Data/Managed</ManagedDir>
+    <R2ModmanProfile Condition="'$(R2ModmanProfile)' == ''">$(HOME)/.config/r2modmanPlus-local/Valheim/profiles/Default</R2ModmanProfile>
+    <BepInExDir Condition="'$(BepInExDir)' == '' and Exists('$(R2ModmanProfile)/BepInEx/core')">$(R2ModmanProfile)/BepInEx</BepInExDir>
+    <BepInExDir Condition="'$(BepInExDir)' == ''">$(ValheimDir)/BepInEx</BepInExDir>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ForgeOracle.Core/ForgeOracle.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="assembly_valheim" HintPath="$(ManagedDir)/assembly_valheim.dll" Publicize="true" Private="false" />
+    <Reference Include="assembly_utils" HintPath="$(ManagedDir)/assembly_utils.dll" Private="false" />
+    <Reference Include="assembly_guiutils" HintPath="$(ManagedDir)/assembly_guiutils.dll" Publicize="true" Private="false" />
+    <Reference Include="Unity.TextMeshPro" HintPath="$(ManagedDir)/Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="UnityEngine" HintPath="$(ManagedDir)/UnityEngine.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(ManagedDir)/UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="UnityEngine.UI" HintPath="$(ManagedDir)/UnityEngine.UI.dll" Private="false" />
+    <Reference Include="UnityEngine.UIModule" HintPath="$(ManagedDir)/UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(ManagedDir)/UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="UnityEngine.InputLegacyModule" HintPath="$(ManagedDir)/UnityEngine.InputLegacyModule.dll" Private="false" />
+  </ItemGroup>
+
+  <Target Name="CheckValheimAssemblies" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(ManagedDir)/assembly_valheim.dll')"
+           Text="Valheim assemblies not found in $(ManagedDir). Set VALHEIM_DIR or -p:ValheimDir=&lt;game folder&gt;." />
+  </Target>
+
+  <Target Name="DeployToGame" AfterTargets="Build" Condition="'$(Deploy)' == 'true'">
+    <Error Condition="!Exists('$(BepInExDir)/core')" Text="BepInEx is not installed in $(BepInExDir)." />
+    <Copy SourceFiles="$(OutDir)ForgeOracle.Core.dll;$(OutDir)ForgeOracleClient.dll;$(OutDir)ForgeOracleClient.pdb"
+          DestinationFolder="$(BepInExDir)/plugins/ForgeOracleClient" />
+    <Message Importance="high" Text="ForgeOracleClient deployed to $(BepInExDir)/plugins/ForgeOracleClient" />
+  </Target>
+
+</Project>

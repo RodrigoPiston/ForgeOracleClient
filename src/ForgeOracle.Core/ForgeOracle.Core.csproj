@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    The prediction engine. It has no Unity or Valheim dependency so it can be unit tested on any .NET runtime and
+    reused by other tools. netstandard2.0 loads in the game's Mono runtime and in modern .NET test hosts.
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>ForgeOracle.Core</AssemblyName>
+    <RootNamespace>ForgeOracle.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>

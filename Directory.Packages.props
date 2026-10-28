@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="BepInEx.Core" Version="5.4.21" />
+    <PackageVersion Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" />
+    <PackageVersion Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
+    <PackageVersion Include="xunit.v3" Version="4.0.1" />
+  </ItemGroup>
+</Project>

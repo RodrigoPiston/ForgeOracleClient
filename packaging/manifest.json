@@ -1,0 +1,9 @@
+{
+  "name": "ForgeOracleClient",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/RodrigoPiston/ForgeOracleClient",
+  "description": "Client-side Forge of Potential predictor: shows whether the next upgrade succeeds, loses a level or destroys the item, before you click. Read-only, no server install.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2360"
+  ]
+}
