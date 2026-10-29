@@ -8,6 +8,14 @@ stored on your character, and the game turns it into the roll. The mod reads tha
 replays the same calculation on its own copy of Unity's random generator. It reveals a result that is already
 fixed; it never changes it. It only runs on your client and never touches your items, seeds or odds.
 
+## Screenshots
+
+![The prediction as the first line of the forge description](screenshots/prediction.png)
+
+![The Forge Oracle panel next to the forge, with the next attempts at the same level](screenshots/panel.png)
+
+![An item whose next attempt would destroy it](screenshots/destroyed.png)
+
 ## Features
 
 - The prediction is the first line of the forge's own item description, in the game font:

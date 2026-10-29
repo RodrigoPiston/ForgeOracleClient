@@ -1,7 +1,7 @@
 # Screenshots for the mod page
 
-Save these as PNG in this folder with exactly these names; the README links to them. Crop to the forge and the
-panel, keep at least 1280 px of width, and leave out the character name and personal inventory.
+Save these as PNG in this folder with exactly these names; the README links to them. Crop to the forge panel (and
+the Forge Oracle panel when it is open) and leave out the character name and the inventory.
 
 | File | What to show |
 |---|---|
