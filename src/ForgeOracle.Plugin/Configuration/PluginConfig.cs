@@ -28,7 +28,7 @@ namespace ForgeOracle.Plugin.Configuration
         Left,
     }
 
-    /// <summary>All user settings, bound to BepInEx/config/rodrigopiston.forgeoracleclient.cfg.</summary>
+    /// <summary>All user settings, bound to BepInEx/config/heido.valheim.forgeoracleclient.cfg.</summary>
     internal sealed class PluginConfig
     {
         private readonly ConfigFile _file;

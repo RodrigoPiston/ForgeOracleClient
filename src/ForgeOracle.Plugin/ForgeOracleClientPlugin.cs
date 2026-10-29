@@ -17,7 +17,7 @@ namespace ForgeOracle.Plugin
     [BepInPlugin(Guid, Name, Version)]
     public sealed class ForgeOracleClientPlugin : BaseUnityPlugin
     {
-        public const string Guid = "rodrigopiston.forgeoracleclient";
+        public const string Guid = "heido.valheim.forgeoracleclient";
         public const string Name = "ForgeOracleClient";
         public const string Version = "1.0.0";
 
